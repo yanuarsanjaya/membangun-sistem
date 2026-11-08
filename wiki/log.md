@@ -46,3 +46,9 @@ tags:
 - Summary: Ingested user interview transcript detailing user background as a physiotherapist and Master degree student aiming to become a lecturer, alongside builder aspirations in AI automation and virtual assistants.
 - Touched: [[wawancara-profil-yanuarsanjaya]], [[yanuarsanjaya]], [[fisioterapi-berbasis-ai-dan-otomasi]], [[pengembangan-asisten-pribadi-ai]], [[overview]], [[index]], [[log]].
 - Notes: Captured personal profile, practical achievements (Google Apps Script automation), challenges (learning curve, AI token costs), and future goals.
+
+## [2026-11-09] maintenance | Vault terhubung ke sandbox Hermes Agent dan sync Git
+
+- Summary: Vault di-mount ke sandbox Hermes Agent di `/opt/data/vault` sebagai second brain (baca-tulis; `.obsidian/` dan `.git/` read-only). Kontainer `vault-sync` meng-commit, pull, dan push vault ke GitHub private setiap 5 menit.
+- Touched: [[log]].
+- Notes: Snapshot awal dibuat sebagai titik pemulihan. Agen mengikuti AGENTS.md lewat instruksi di SOUL.md sandbox. Remote GitHub dan plugin Obsidian Git di iPhone belum dikonfigurasi.
