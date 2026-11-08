@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Obsidian per-device state (keep app.json, appearance.json, templates.json tracked)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# Temporary files
+*.tmp
+*.swp

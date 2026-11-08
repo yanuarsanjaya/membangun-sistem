@@ -1,0 +1,75 @@
+filters:
+  and:
+    - 'file.inFolder("wiki")'
+    - 'file.ext == "md"'
+
+properties:
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  updated:
+    displayName: Updated
+  confidence:
+    displayName: Confidence
+
+views:
+  - type: table
+    name: All pages
+    order:
+      - file.name
+      - type
+      - status
+      - updated
+      - sources
+
+  - type: table
+    name: Sources
+    filters:
+      and:
+        - 'type == "source"'
+    order:
+      - file.name
+      - status
+      - author
+      - published
+      - updated
+
+  - type: table
+    name: Knowledge
+    filters:
+      or:
+        - 'type == "concept"'
+        - 'type == "entity"'
+        - 'type == "comparison"'
+        - 'type == "question"'
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - confidence
+      - updated
+      - sources
+
+  - type: table
+    name: Needs attention
+    filters:
+      or:
+        - 'status == "seed"'
+        - 'status == "stale"'
+    order:
+      - file.name
+      - type
+      - status
+      - updated
+      - confidence
+
+  - type: cards
+    name: Cards
+    order:
+      - file.name
+      - type
+      - status
+      - tags

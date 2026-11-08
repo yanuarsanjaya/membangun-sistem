@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # 1. 9Router Service: Model Proxy & Routing
+  router9:
+    image: node:18-alpine
+    container_name: 9router-sandbox
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    command: >
+      sh -c "npm install -g 9router && 9router --port 3000"
+    networks:
+      - agent-net
+
+  # 2. Hermes Agent Service: Autonomous AI Agent
+  hermes:
+    image: python:3.10-slim
+    container_name: hermes-agent-sandbox
+    restart: unless-stopped
+    volumes:
+      # SANDBOX ISOLATION: Agent hanya bisa mengakses folder ai-workspace di Mac Anda
+      - ~/ai-workspace:/app/workspace
+    working_dir: /app
+    environment:
+      - OPENAI_API_BASE=http://router9:3000/v1
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    command: >
+      bash -c "apt-get update && apt-get install -y git curl &&
+               echo 'Hermes Agent Sandbox Ready. Waiting for configuration...'"
+    depends_on:
+      - router9
+    networks:
+      - agent-net
+
+networks:
+  agent-net:
+    driver: bridge
