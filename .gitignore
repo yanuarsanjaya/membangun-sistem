@@ -10,3 +10,6 @@
 # Temporary files
 *.tmp
 *.swp
+
+# Plugin folders are installed per device; their data.json can hold credentials
+.obsidian/plugins/
