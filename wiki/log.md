@@ -3,7 +3,7 @@ title: "Wiki Log"
 type: log
 status: evergreen
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-11
 tags:
   - meta
 ---
@@ -52,3 +52,9 @@ tags:
 - Summary: Vault di-mount ke sandbox Hermes Agent di `/opt/data/vault` sebagai second brain (baca-tulis; `.obsidian/` dan `.git/` read-only). Kontainer `vault-sync` meng-commit, pull, dan push vault ke GitHub private setiap 5 menit.
 - Touched: [[log]].
 - Notes: Snapshot awal dibuat sebagai titik pemulihan. Agen mengikuti AGENTS.md lewat instruksi di SOUL.md sandbox. Remote GitHub dan plugin Obsidian Git di iPhone belum dikonfigurasi.
+
+## [2026-11-11] maintenance | Audit struktur vault dan isolasi sandbox Hermes Agent
+
+- Summary: Merapikan struktur root vault (menghapus `docker-compose.yml`, `README-SANDBOX.md` prototipe usang, dan `....md`; memindahkan `fisioterapi/`, `penelitian-s2-fisioterapi/`, `trading-dan-analisis-keuangan/` ke `projects/`; menghapus 2 file PDF palsu berisi HTML Springer; memindahkan 10 sumber yang belum di-ingest ke `raw/inbox/`) serta memperketat isolasi di `~/hermes-sandbox/docker-compose.yml` menjadi read-only untuk root vault dan read-write hanya pada `raw/inbox/` dan `projects/`.
+- Touched: [[log]].
+- Notes: Konfigurasi dan skema OpenCode (`AGENTS.md`, `.opencode/`, `scripts/wiki.py`, `templates/`, `wiki/`) tetap utuh tanpa perubahan cara kerja.
